@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Course: Medical Emergencies in Dental Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Visualization & Content Choices: 
+        Report Info: Course modules & their textual content.
+        Goal: Inform & Educate.
+        Viz/Presentation Method: Structured HTML text, lists, and highlighted key terms. No charts are present in the source report. The primary "visualization" will be the clear, hierarchical presentation of information.
+        Interaction: Click-based navigation between modules.
+        Justification: Direct and clear presentation of educational material. The current report is text-heavy, so the focus is on making that text digestible.
+        Library/Method: HTML, Tailwind CSS, Vanilla JS for navigation.
+        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link.active { background-color: #059669; color: white; } /* emerald-600 */
+        .nav-link:hover { background-color: #d1fae5; color: #065f46; } /* emerald-100 text-emerald-700 */
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .mnemonic { font-weight: bold; color: #059669; } /* emerald-600 */
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <nav id="sidebar" class="w-full md:w-72 bg-stone-200 p-6 space-y-3 shrink-0 md:overflow-y-auto">
+            <h1 class="text-xl font-bold text-emerald-700 mb-6 border-b-2 border-emerald-600 pb-2">Course Modules</h1>
+            <a href="#module1" data-target="module1" class="nav-link block p-3 rounded-md font-medium text-stone-700">1. Introduction & Foundations</a>
+            <a href="#module2" data-target="module2" class="nav-link block p-3 rounded-md font-medium text-stone-700">2. Prevention & Patient Assessment</a>
+            <a href="#module3" data-target="module3" class="nav-link block p-3 rounded-md font-medium text-stone-700">3. BLS & Emergency Kit</a>
+            <a href="#module4" data-target="module4" class="nav-link block p-3 rounded-md font-medium text-stone-700">4. Specific Medical Emergencies</a>
+            <a href="#module5" data-target="module5" class="nav-link block p-3 rounded-md font-medium text-stone-700">5. Team Preparedness & Post-Emergency</a>
+            <a href="#module6" data-target="module6" class="nav-link block p-3 rounded-md font-medium text-stone-700">6. Conclusion & Continuous Improvement</a>
+            <a href="#disclaimer" data-target="disclaimer" class="nav-link block p-3 rounded-md font-medium text-stone-700">Disclaimer</a>
+        </nav>
+
+        <main id="main-content" class="flex-1 p-6 md:p-10 overflow-y-auto">
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-emerald-700">Recognizing & Managing Common Medical Emergencies in Dental Practice</h1>
+                <p class="text-lg text-stone-600 mt-2">An interactive guide for general dentists and dental team members.</p>
+            </header>
+
+            <div id="module-overview" class="content-section p-6 bg-white rounded-lg shadow-lg">
+                 <h2 class="text-2xl font-semibold text-emerald-600 mb-4">Welcome to the Course!</h2>
+                <p class="mb-3 text-stone-700">This interactive application is designed to help you navigate the key aspects of recognizing and managing common medical emergencies that may arise in the dental office. The goal is to ensure patient safety and enhance team preparedness.</p>
+                <p class="mb-3 text-stone-700"><strong class="text-emerald-700">Course Goal:</strong> To equip general dentists with the knowledge and protocols to effectively recognize and manage common medical emergencies that may arise in the dental office, ensuring patient safety and team preparedness.</p>
+                <p class="mb-3 text-stone-700"><strong class="text-emerald-700">Target Audience:</strong> General Dentists and Dental Team Members.</p>
+                <p class="text-stone-700"><strong class="text-emerald-700">Duration:</strong> Approximately 60 Minutes (self-paced through this interactive guide).</p>
+                <p class="mt-4 text-stone-600">Please use the navigation panel on the left to explore the different modules of the course. The first module, "Introduction & Foundations," is a great place to start.</p>
+            </div>
+
+            <section id="module1" class="content-section p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-emerald-600 mb-4 border-b pb-2">Module 1: Introduction & Foundations (5 Minutes)</h2>
+                <p class="text-sm text-stone-500 mb-4">This module sets the stage, emphasizing why emergency preparedness is crucial in every dental practice and providing an overview of common emergencies.</p>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">The Imperative of Preparedness (2 minutes)</h3>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Why every dental office must be prepared for medical emergencies.</li>
+                            <li>Legal and ethical responsibilities.</li>
+                            <li>Building patient trust and confidence.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Overview of Common Medical Emergencies (3 minutes)</h3>
+                        <p class="text-stone-700 mb-2">Common emergencies include:</p>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Syncope</li>
+                            <li>Hypoglycemia</li>
+                            <li>Allergic Reactions (mild to severe)</li>
+                            <li>Asthma Attack</li>
+                            <li>Angina/Myocardial Infarction</li>
+                            <li>Seizures</li>
+                            <li>Hypertensive Urgency/Emergency</li>
+                        </ul>
+                        <p class="mt-2 text-stone-700"><strong>Statistic:</strong> How often do emergencies occur in dental settings? (General idea: infrequent but potentially life-threatening).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="module2" class="content-section p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-emerald-600 mb-4 border-b pb-2">Module 2: Prevention & Patient Assessment (10 Minutes)</h2>
+                <p class="text-sm text-stone-500 mb-4">Focuses on the critical role of thorough patient assessment and medical history in preventing emergencies.</p>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">The First Line of Defense: Thorough Medical History (5 minutes)</h3>
+                        <p class="text-stone-700 mb-2">Importance of a comprehensive medical history questionnaire. Key areas to probe:</p>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Known medical conditions (cardiovascular, respiratory, endocrine, neurological, allergies).</li>
+                            <li>Current medications (including OTC and supplements).</li>
+                            <li>Previous adverse reactions to dental treatment or medications.</li>
+                            <li>Hospitalizations and surgeries.</li>
+                        </ul>
+                        <p class="text-stone-700 mt-2">Regularly updating medical histories (e.g., annually or if health status changes).</p>
+                        <p class="text-stone-700">Techniques for effective patient interviewing.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Identifying and Managing At-Risk Patients (3 minutes)</h3>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>ASA Physical Status Classification System as a tool.</li>
+                            <li>Recognizing red flags in the medical history.</li>
+                            <li>Consultation with physicians when necessary.</li>
+                            <li>Stress and anxiety reduction protocols for apprehensive patients.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Pre-Operative Assessment (2 minutes)</h3>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Vital signs (blood pressure, pulse, respiration rate, oxygen saturation if indicated).</li>
+                            <li>Considering modifications to treatment plans for high-risk individuals.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="module3" class="content-section p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-emerald-600 mb-4 border-b pb-2">Module 3: Essential Preparedness: BLS & Emergency Kit (10 Minutes)</h2>
+                <p class="text-sm text-stone-500 mb-4">Covers the non-negotiables: Basic Life Support certification and a well-stocked, maintained emergency kit.</p>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Basic Life Support (BLS) – The Cornerstone (5 minutes)</h3>
+                        <p class="text-stone-700 mb-2">Mandatory current BLS certification for all dental team members.</p>
+                        <p class="text-stone-700 mb-1 font-medium">Review of core BLS components:</p>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li><strong class="mnemonic">C</strong>irculation: Chest compressions (rate, depth, recoil).</li>
+                            <li><strong class="mnemonic">A</strong>irway: Head-tilt/chin-lift, jaw thrust.</li>
+                            <li><strong class="mnemonic">B</strong>reathing: Rescue breaths (with barrier device).</li>
+                        </ul>
+                        <p class="text-stone-700 mt-2 font-medium">Automated External Defibrillator (AED) usage:</p>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Importance and accessibility.</li>
+                            <li>Steps for operation.</li>
+                            <li>Pad placement.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">The Dental Emergency Kit: What, Where, and How (5 minutes)</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-lg font-semibold text-stone-600 mb-1">Essential Drugs:</h4>
+                                <ul class="list-decimal list-inside text-stone-700 space-y-1 pl-4">
+                                    <li>Oxygen (portable cylinder with mask/nasal cannula).</li>
+                                    <li>Epinephrine (auto-injector, e.g., EpiPen, and/or 1:1000 ampules/vials for IM injection).</li>
+                                    <li>Antihistamine (e.g., Diphenhydramine injectable and/or oral).</li>
+                                    <li>Bronchodilator (e.g., Albuterol inhaler).</li>
+                                    <li>Nitroglycerin (spray or sublingual tablets).</li>
+                                    <li>Aspirin (non-enteric coated, 162-325 mg).</li>
+                                    <li>Oral glucose source (gel, tablets, or juice).</li>
+                                    <li>Aromatic ammonia (smelling salts).</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-stone-600 mb-1">Essential Equipment:</h4>
+                                <ul class="list-decimal list-inside text-stone-700 space-y-1 pl-4">
+                                    <li>Syringes and needles for drug administration.</li>
+                                    <li>Sphygmomanometer and stethoscope.</li>
+                                    <li>Pulse oximeter.</li>
+                                    <li>Suction device and tips.</li>
+                                    <li>Magill forceps (for foreign body airway obstruction).</li>
+                                    <li>Barrier devices for rescue breathing (pocket mask, BVM).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-stone-600 mt-4 mb-1">Maintenance:</h4>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Regular checks for drug expiration dates.</li>
+                            <li>Ensuring oxygen cylinder is full.</li>
+                            <li>Familiarity of all team members with kit contents and location.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="module4" class="content-section p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-emerald-600 mb-4 border-b pb-2">Module 4: Recognizing & Managing Specific Medical Emergencies (25 Minutes)</h2>
+                <p class="text-sm text-stone-500 mb-4">This core module details the recognition and immediate management steps for common emergencies using the P-C-A-B-D approach (Positioning, Circulation, Airway, Breathing, Definitive Treatment/Drugs) where applicable.</p>
+                <div class="space-y-6">
+                    <article class="p-4 border border-stone-300 rounded-md">
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Syncope (Vasovagal Syncope) (4 minutes)</h3>
+                        <p class="font-medium text-stone-600">Recognition:</p>
+                        <p class="text-stone-700 mb-2 pl-4">Prodromal symptoms (lightheadedness, nausea, warmth, pallor, sweating), loss of consciousness, weak pulse, low BP.</p>
+                        <p class="font-medium text-stone-600">Management:</p>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li><strong class="mnemonic">P</strong>osition: Trendelenburg (supine with feet slightly elevated).</li>
+                            <li><strong class="mnemonic">A</strong>irway: Ensure open airway.</li>
+                            <li><strong class="mnemonic">B</strong>reathing: Monitor breathing. Administer oxygen if needed.</li>
+                            <li><strong class="mnemonic">D</strong>efinitive: Aromatic ammonia (optional), reassurance upon recovery. Monitor vital signs. Determine cause.</li>
+                        </ul>
+                    </article>
+
+                    <article class="p-4 border border-stone-300 rounded-md">
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Hypoglycemia (Insulin Shock) (4 minutes)</h3>
+                        <p class="font-medium text-stone-600">Recognition:</p>
+                        <p class="text-stone-700 mb-1 pl-4"><em>Conscious patient:</em> Hunger, weakness, trembling, sweating, confusion, irritability, tachycardia.</p>
+                        <p class="text-stone-700 mb-2 pl-4"><em>Unconscious patient:</em> Seizures, coma.</p>
+                        <p class="font-medium text-stone-600">Management:</p>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li><strong>Conscious Patient:</strong> Administer 15-20g oral glucose (juice, gel, tablets).</li>
+                            <li><strong>Unconscious Patient (or unable to swallow):</strong>
+                                <ul class="list-circle list-inside pl-6 space-y-1">
+                                    <li>Activate EMS immediately.</li>
+                                    <li>Administer intramuscular glucagon (if available and trained).</li>
+                                    <li>Maintain airway, provide oxygen, monitor vital signs.</li>
+                                    <li>IV dextrose by trained personnel if available.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="p-4 border border-stone-300 rounded-md">
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Allergic Reactions (7 minutes total)</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-lg font-medium text-stone-600">Mild/Moderate Allergic Reaction (3 mins)</h4>
+                                <p class="text-sm text-stone-500 mb-1">(e.g., Urticaria, Pruritus, Angioedema without respiratory distress)</p>
+                                <p class="font-medium text-stone-600">Recognition:</p> <p class="text-stone-700 mb-2 pl-4">Skin rash, itching, localized swelling.</p>
+                                <p class="font-medium text-stone-600">Management:</p>
+                                <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                                    <li>Stop exposure to allergen.</li>
+                                    <li>Administer oral or IM antihistamine (e.g., Diphenhydramine).</li>
+                                    <li>Monitor vital signs closely for progression.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-stone-600">Anaphylaxis (Severe, Life-Threatening Allergic Reaction) (4 mins)</h4>
+                                <p class="font-medium text-stone-600">Recognition:</p> <p class="text-stone-700 mb-2 pl-4">Rapid onset, skin changes (often), respiratory distress (wheezing, dyspnea, throat tightness, stridor), cardiovascular collapse (hypotension, tachycardia, weak pulse), GI symptoms.</p>
+                                <p class="font-medium text-stone-600">Management:</p>
+                                <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                                    <li class="font-bold text-red-600">Activate EMS IMMEDIATELY.</li>
+                                    <li><strong class="mnemonic">P</strong>osition: Supine (or position of comfort if respiratory distress, elevate legs if hypotensive).</li>
+                                    <li><strong class="mnemonic">D</strong>efinitive: <strong class="text-red-600">Epinephrine IM (0.3-0.5 mg for adults; 0.01 mg/kg for children) into anterolateral thigh. Repeat every 5-15 mins if no improvement.</strong></li>
+                                    <li><strong class="mnemonic">A</strong>irway: Maintain open airway.</li>
+                                    <li><strong class="mnemonic">B</strong>reathing: Administer high-flow oxygen. Assist ventilation if necessary.</li>
+                                    <li><strong class="mnemonic">C</strong>irculation: Monitor pulse and BP.</li>
+                                    <li>Consider adjunctive therapies (antihistamines, corticosteroids) after initial epinephrine, usually by EMS.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                     <article class="p-4 border border-stone-300 rounded-md">
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Asthma Attack / Bronchospasm (4 minutes)</h3>
+                        <p class="font-medium text-stone-600">Recognition:</p>
+                        <p class="text-stone-700 mb-2 pl-4">Wheezing, dyspnea, coughing, chest tightness, use of accessory muscles for breathing, cyanosis (severe).</p>
+                        <p class="font-medium text-stone-600">Management:</p>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li><strong class="mnemonic">P</strong>osition: Upright or position of comfort.</li>
+                            <li><strong class="mnemonic">D</strong>efinitive: Administer patient's own bronchodilator (if available) or office supply (e.g., Albuterol, 2-4 puffs).</li>
+                            <li><strong class="mnemonic">B</strong>reathing: Administer oxygen.</li>
+                            <li>If no improvement or severe attack: Activate EMS. Consider epinephrine if refractory.</li>
+                        </ul>
+                    </article>
+
+                    <article class="p-4 border border-stone-300 rounded-md">
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Angina Pectoris / Myocardial Infarction (Chest Pain) (6 minutes)</h3>
+                        <p class="font-medium text-stone-600">Recognition:</p>
+                        <p class="text-stone-700 mb-2 pl-4">Chest pain/discomfort (pressure, tightness, squeezing), may radiate to arm/jaw/back, dyspnea, nausea, sweating, anxiety. <em class="text-sm text-stone-500">Note: Symptoms can be atypical, especially in women and diabetics.</em></p>
+                        <p class="font-medium text-stone-600">Management:</p>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li class="font-bold text-red-600">Assume cardiac until proven otherwise. Activate EMS IMMEDIATELY if MI suspected or pain not relieved by nitroglycerin.</li>
+                            <li><strong class="mnemonic">P</strong>osition: Semi-reclined or upright.</li>
+                            <li><strong class="mnemonic">D</strong>efinitive (if history of angina and prescribed nitroglycerin):
+                                <ul class="list-circle list-inside pl-6 space-y-1">
+                                     <li>Administer nitroglycerin (0.3-0.4 mg sublingually/spray). Repeat up to 3 doses at 5-min intervals if pain persists and BP stable (>90 mmHg systolic).</li>
+                                </ul>
+                            </li>
+                             <li><strong class="mnemonic">D</strong>efinitive (if MI suspected or no relief):
+                                <ul class="list-circle list-inside pl-6 space-y-1">
+                                     <li>Administer Aspirin (162-325 mg, chewable non-enteric coated).</li>
+                                </ul>
+                            </li>
+                            <li><strong class="mnemonic">B</strong>reathing: Administer oxygen (nasal cannula).</li>
+                            <li><strong class="mnemonic">C</strong>irculation: Monitor vital signs continuously. Be prepared for CPR/AED.</li>
+                            <li>Keep patient calm.</li>
+                        </ul>
+                    </article>
+                    <p class="mt-4 text-sm text-stone-600"><em>(Note: Seizures and Hypertensive Crisis are also common but might stretch the 25-min slot if covered in equal depth. They could be briefly mentioned or prioritized based on perceived need for the target audience. For this draft, focus is on the most frequently encountered or highest acuity conditions that fit the timeframe.)</em></p>
+                </div>
+            </section>
+
+            <section id="module5" class="content-section p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-emerald-600 mb-4 border-b pb-2">Module 5: Team Preparedness & Post-Emergency Procedures (5 Minutes)</h2>
+                <p class="text-sm text-stone-500 mb-4">Addresses the importance of a coordinated team response, practice, and proper follow-up after an emergency.</p>
+                 <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">The Emergency Team: Roles and Responsibilities (2 minutes)</h3>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Defining roles (e.g., team leader/dentist, medication administrator, recorder, EMS liaison).</li>
+                            <li>Importance of clear communication.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Practice Drills and Simulation (2 minutes)</h3>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Regularly conducting mock emergency drills.</li>
+                            <li>Reviewing performance and identifying areas for improvement.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Documentation and Debriefing (1 minute)</h3>
+                         <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Thoroughly documenting any emergency event in the patient record.</li>
+                            <li>Post-emergency team debriefing.</li>
+                            <li>Reporting requirements (if any).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="module6" class="content-section p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-emerald-600 mb-4 border-b pb-2">Module 6: Conclusion & Continuous Improvement (5 Minutes)</h2>
+                <p class="text-sm text-stone-500 mb-4">Summarizes key learnings and emphasizes the ongoing nature of emergency preparedness.</p>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Key Takeaways & Recap (2 minutes)</h3>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Prevention is paramount.</li>
+                            <li>Early recognition and prompt action save lives.</li>
+                            <li>Teamwork and preparedness are critical.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Importance of Ongoing Training and Updates (2 minutes)</h3>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1 pl-4">
+                            <li>Staying current with BLS/ACLS (if applicable).</li>
+                            <li>Reviewing emergency protocols regularly.</li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold text-stone-700 mb-2">Open Forum / Q&A (1 minute)</h3>
+                        <p class="text-stone-700 pl-4">In a live setting, this would be an opportunity for questions. For this interactive guide, reflect on the material and discuss any questions with your team or refer to the cited resources for further information.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="disclaimer" class="content-section p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-emerald-600 mb-4 border-b pb-2">Disclaimer</h2>
+                <p class="text-stone-700 italic">This course content provides a general overview and is not a substitute for comprehensive hands-on emergency medical training (e.g., BLS, ACLS certification) or specific institutional protocols. Always refer to current guidelines from recognized dental and medical authorities.</p>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            const overviewSection = document.getElementById('module-overview');
+
+            function setActiveContent(targetId) {
+                contentSections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    if (link.dataset.target === targetId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                window.scrollTo(0, 0); // Scroll to top of page on content change
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const targetId = this.dataset.target;
+                    setActiveContent(targetId);
+                    // Update URL hash for direct linking, without triggering scroll
+                    if(history.pushState) {
+                        history.pushState(null, null, '#' + targetId);
+                    } else {
+                        location.hash = '#' + targetId;
+                    }
+                });
+            });
+
+            // Initial content display based on URL hash or default
+            let initialTarget = window.location.hash.substring(1);
+            if (!initialTarget || !document.getElementById(initialTarget)) {
+                initialTarget = 'module-overview'; 
+            }
+            
+            if(initialTarget === 'module-overview'){
+                overviewSection.classList.add('active');
+            } else {
+                 overviewSection.classList.remove('active'); // Ensure overview is hidden if a module is targeted
+            }
+            setActiveContent(initialTarget);
+
+
+            // Handle back/forward navigation
+            window.addEventListener('popstate', function() {
+                let targetId = window.location.hash.substring(1);
+                if (!targetId || !document.getElementById(targetId)) {
+                    targetId = 'module-overview';
+                }
+                if(targetId === 'module-overview'){
+                    overviewSection.classList.add('active');
+                } else {
+                    overviewSection.classList.remove('active');
+                }
+                setActiveContent(targetId);
+            });
+        });
+    </script>
+
+</body>
+</html>
